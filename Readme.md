@@ -13,3 +13,17 @@
 ### Una empresa de turismo desea registrar viajes y los pasajeros inscriptos.
 
 Campos requeridos:
+
+*   Destino (mínimo 3 caracteres)
+*   Fecha del viaje
+*   Duración (días)
+*   Precio
+*   Nombre del pasajero
+*   DNI del pasajero (mínimo 7 cifras)
+
+Requerimientos adicionales:
+
+*   Calcular importe total (precio*cantidad de días)
+*   Mostrar estadísticas: total recaudado por destino, cantidad de pasajeros por viaje.
+*   Estilos condicionales para viajes (en menos de 15 días verde - 15 a 30 amarillo - +30 rojo)
+*   Filtrar viajes por destino o pasajero.s
