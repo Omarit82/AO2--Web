@@ -1,0 +1,77 @@
+/*FONTS*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+
+/*COLORES INSTITUCIONALES*/
+:root{
+    --color-primary: #048B62;
+    --color-secondary: #3BA389;
+    --color-text: #FFF;
+    --color-background:#00563C ;
+    --color-alter-text: #AAA;
+}
+
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto Condensed",sans-serif;
+}
+
+header{
+    background-color: var(--color-background);
+    color:var(--color-text);
+    height: 10vh;
+    .title{
+        font-style: italic;
+        text-align: center;
+    }    
+}
+
+main{
+    min-height: 70vh;
+}
+
+footer{
+    background-color: var(--color-background);
+    color:var(--color-text);
+    .imgFooter{
+        max-width: 50px;
+    }
+}
+
+/*ESTILOS PENSADOS MOBILE-FIRST*/
+
+/*TABLET*/
+@media (min-width: 768px) and (max-width: 969px){
+    footer{
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap-reverse;
+        .footerMain{
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+        }
+    }
+}
+
+/*DESKTOP*/
+@media (min-width: 970px){
+    header{
+        height: 25vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .navbar{
+        display: none;
+    }
+    footer{
+        display: flex;
+        justify-content: space-between;
+        div{
+            width: 25%;
+            margin: 5px;
+        }
+    }
+}

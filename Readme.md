@@ -26,4 +26,9 @@ Requerimientos adicionales:
 *   Calcular importe total (precio*cantidad de días)
 *   Mostrar estadísticas: total recaudado por destino, cantidad de pasajeros por viaje.
 *   Estilos condicionales para viajes (en menos de 15 días verde - 15 a 30 amarillo - +30 rojo)
-*   Filtrar viajes por destino o pasajero.s
+*   Filtrar viajes por destino o pasajeros.
+
+## Features
+
+Para esta aplicación se utilizará JS con Bootstrap. La webapp esta pensada para ser mobile first.
+ 
