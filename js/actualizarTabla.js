@@ -1,0 +1,71 @@
+"use strict";
+/*Funcion de actualizacion de la tabla de viajes*/
+export function actualizaTabla(){
+    const tabla = document.getElementById("tableBody");
+    /** Voy a actualizar la tabla con la informacion del Localstorage **/
+    const info = JSON.parse(localStorage.getItem("info"));
+    if(info.length !== 0){
+        let message = document.getElementById("empty");
+        if(message) {
+            message.remove();
+        }
+    }
+    for(let i=0;i<info.length;i++){
+        let bloque = document.createElement("tr"); /**NUEVA FILA */
+        let ciudad = document.createElement("td");
+        ciudad.textContent=info[i].to;
+        let fecha = document.createElement("td");
+        fecha.textContent=info[i].date;
+        let duracion = document.createElement("td");
+        duracion.textContent=info[i].duration;
+        let precio = document.createElement("td");
+        precio.textContent="$ "+info[i].price;
+        let importe = document.createElement("td");
+        importe.textContent="$ "+parseFloat(info[i].duration)*parseFloat(info[i].price);
+        let nombre = document.createElement("td");
+        nombre.textContent=info[i].name;
+        let dni = document.createElement("td");
+        dni.textContent=info[i].dni;
+        let estado = document.createElement("td");
+        estado.textContent="A cobrar";
+        let eliminar = document.createElement("button");
+        eliminar.textContent="Eliminar";
+        eliminar.classList.add("btn","btn-danger");
+        eliminar.id="eliminar"+i;
+        let pagar = document.createElement("button");
+        pagar.classList.add("btn","btn-info","me-2");
+        pagar.id="pagar"+i;
+        pagar.textContent="Pagar";
+        let botones = document.createElement("td");
+        botones.classList.add("d-flex");
+        botones.appendChild(pagar);
+        botones.appendChild(eliminar);
+    
+        bloque.appendChild(ciudad);
+        bloque.appendChild(fecha);
+        bloque.appendChild(duracion);
+        bloque.appendChild(precio);
+        bloque.appendChild(importe);
+        bloque.appendChild(nombre);
+        bloque.appendChild(dni);
+        bloque.appendChild(estado);
+        bloque.appendChild(botones);
+        tabla.appendChild(bloque);
+    }
+   
+}
+
+export function actualizarEstadisticas(){
+    /**TRAIGO LOS DATOS DEL LOCALSTORAGE */
+    const data = JSON.parse(localStorage.getItem("info"));    
+    let msg = document.getElementById("msgTotal");
+    if(data){
+        msg.remove();
+        data.forEach(trip => {
+            
+        });
+    }else{
+        msg.textContent="Sin Datos"
+    }
+
+}
