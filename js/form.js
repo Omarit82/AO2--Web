@@ -1,6 +1,6 @@
 "use strict";
 
-import { actualizaTabla } from "./actualizarTabla.js";
+import { actualizarEstadisticas, actualizaTabla } from "./actualizarTabla.js";
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -28,6 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
             localStorage.setItem('info',JSON.stringify(info));
         }
         actualizaTabla();
+        actualizarEstadisticas()
         form.reset();
     })
 

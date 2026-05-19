@@ -60,10 +60,30 @@ export function actualizarEstadisticas(){
     const data = JSON.parse(localStorage.getItem("info"));    
     let msg = document.getElementById("msgTotal");
     if(data){
-        msg.remove();
-        data.forEach(trip => {
-            
+        msg.innerHTML="";
+        const resultado = [];
+        data.forEach(element => {
+            /**busco el index de un elemento igual*/
+            const index = resultado.findIndex( elem  => elem.to == element.to);
+            if(index == -1){
+                /**si el elemento aun no se cargo en el arreglo lo pusheo */
+                element.total = element.price*element.duration;
+                resultado.push(element);
+            }else{
+                /**el elemento ya se habia cargado en el arreglo, sumo el total. */
+                resultado[index].total = (resultado[index].price*resultado[index].duration) + (element.price*element.duration); 
+            }
         });
+        console.log(resultado);
+        /**Creo una un-order list **/
+        const lista = document.createElement("ul");
+        resultado.forEach(el => {
+            let item = document.createElement("li");
+            item.classList.add("text-start");
+            item.textContent=el.to+" $"+el.total;
+            lista.appendChild(item);
+        });
+        msg.appendChild(lista);
     }else{
         msg.textContent="Sin Datos"
     }
