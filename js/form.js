@@ -23,7 +23,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }else{
             /**Limpio la tabla */
             let tabla = document.getElementById("tableBody");
-            tabla.innerHTML="";
+            if(tabla){
+                tabla.innerHTML="";
+            }
             info.push(data);
             localStorage.setItem('info',JSON.stringify(info));
         }

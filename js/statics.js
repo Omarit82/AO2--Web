@@ -1,6 +1,6 @@
 /** El use strict elimina los errores silenciosos de javascript, prohibe cierta sintaxis - Buena practica*/
 "use strict";
-import { actualizarEstadisticas, actualizaTabla } from "./actualizarTabla.js";
+import { actualizarEstadisticas, actualizarPasajeros, actualizaTabla } from "./actualizarTabla.js";
 
  
 
@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
     } else{
         actualizaTabla();
         actualizarEstadisticas();
+        actualizarPasajeros();
     }
 
 });

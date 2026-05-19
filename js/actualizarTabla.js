@@ -30,10 +30,10 @@ export function actualizaTabla(){
         estado.textContent="A cobrar";
         let eliminar = document.createElement("button");
         eliminar.textContent="Eliminar";
-        eliminar.classList.add("btn","btn-danger");
+        eliminar.classList.add("btn","btn-danger","eliminar");
         eliminar.id="eliminar"+i;
         let pagar = document.createElement("button");
-        pagar.classList.add("btn","btn-info","me-2");
+        pagar.classList.add("btn","btn-info","me-2","pagar");
         pagar.id="pagar"+i;
         pagar.textContent="Pagar";
         let botones = document.createElement("td");
@@ -64,7 +64,7 @@ export function actualizarEstadisticas(){
         const resultado = [];
         data.forEach(element => {
             /**busco el index de un elemento igual*/
-            const index = resultado.findIndex( elem  => elem.to == element.to);
+            const index = resultado.findIndex( elem  => elem.to === element.to);
             if(index == -1){
                 /**si el elemento aun no se cargo en el arreglo lo pusheo */
                 element.total = element.price*element.duration;
@@ -88,4 +88,37 @@ export function actualizarEstadisticas(){
         msg.textContent="Sin Datos"
     }
 
+}
+
+export function actualizarPasajeros(){
+    const data = JSON.parse(localStorage.getItem("info"));    
+    let msg = document.getElementById("paxTotal");
+    if(data){
+        msg.innerHTML="";
+        const resultado = [];
+        data.forEach(element => {
+            /**busco el index de un elemento igual(mismo destino-misma fecha)*/
+            const index = resultado.findIndex( elem  => (elem.to === element.to)&&(elem.date === element.date));
+            if(index == -1){
+                /**si el elemento aun no se cargo en el arreglo lo pusheo */
+                element.pax = 1;
+                resultado.push(element);
+            }else{
+                /**el elemento ya se habia cargado en el arreglo, sumo uno. */
+                resultado[index].pax = resultado[index].pax+1; 
+            }
+        });
+        console.log(resultado);
+        /**Creo una un-order list **/
+        const lista = document.createElement("ul");
+        resultado.forEach(el => {
+            let item = document.createElement("li");
+            item.classList.add("text-start");
+            item.textContent=el.to+" ("+el.date+") "+el.pax+" pasajero/s";
+            lista.appendChild(item);
+        });
+        msg.appendChild(lista);
+    }else{
+        msg.textContent="Sin Datos"
+    }
 }
