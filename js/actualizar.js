@@ -10,8 +10,10 @@ export function cargaTabla(){
     for(let i=0;i<info.length;i++){
         let bloque = document.createElement("tr"); /**NUEVA FILA */
         let ciudad = document.createElement("td");
+        ciudad.classList.add("text-nowrap");
         ciudad.textContent=info[i].to;
         let fecha = document.createElement("td");
+        fecha.classList.add("text-nowrap");
         let hoy = Date.now();
         if(Date.parse(info[i].date)-hoy < (15*24*60*60*1000)){
             fecha.classList.add("green");
@@ -22,16 +24,22 @@ export function cargaTabla(){
         }
         fecha.textContent=info[i].date;
         let duracion = document.createElement("td");
+        duracion.classList.add("text-nowrap");
         duracion.textContent=info[i].duration;
         let precio = document.createElement("td");
+        precio.classList.add("text-nowrap");
         precio.textContent="$ "+(info[i].price);
         let importe = document.createElement("td");
+        importe.classList.add("text-nowrap");
         importe.textContent="$ "+(parseFloat(info[i].duration)*parseFloat(info[i].price)).toFixed(2);
         let nombre = document.createElement("td");
+        nombre.classList.add("text-nowrap");
         nombre.textContent=info[i].name;
         let dni = document.createElement("td");
+        dni.classList.add("text-nowrap");
         dni.textContent=info[i].dni;
         let estado = document.createElement("td");
+        estado.classList.add("text-nowrap");
         estado.textContent=info[i].estado;
         estado.id = "estado"+i;
         /**CREO LOS BOTONES CON ID ESPECIFICO A CADA UNO */
@@ -66,8 +74,8 @@ export function cargaTabla(){
         bloque.appendChild(estado);
         bloque.appendChild(botones);
         tabla.appendChild(bloque);
-        funcionalidadBotones();
-    }   
+    }
+    funcionalidadBotones();   
 }
 
 export function actualizarEstadisticas(){
