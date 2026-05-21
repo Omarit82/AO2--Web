@@ -93,7 +93,7 @@ export function actualizarEstadisticas(){
         const lista = document.createElement("ul");
         resultado.forEach(el => {
             let item = document.createElement("li");
-            item.classList.add("text-start");
+            item.classList.add("text-start","fs-5");
             item.textContent=el.to+" $"+el.total;
             lista.appendChild(item);
         });
@@ -126,7 +126,7 @@ export function actualizarPasajeros(){
         const lista = document.createElement("ul");
         resultado.forEach(el => {
             let item = document.createElement("li");
-            item.classList.add("text-start");
+            item.classList.add("text-start","fs-5");
             item.textContent=el.to+" ("+el.date+") "+el.pax+" pasajero/s";
             lista.appendChild(item);
         });
