@@ -15,10 +15,10 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Roboto Condensed",sans-serif;
-}
-
-.w-80{
-    width: 80%;
+    a {
+        text-decoration: none;
+        color: var(--color-alter-text)
+    }
 }
 
 .btn-success{
@@ -49,17 +49,51 @@ main{
         background-color: var(--color-secondary);
         color: var(--color-text);
         border-radius: 10px;
+        margin: 1%;
     }
-    .isEmpty{
-        display: none;
+    .botonera{
+        padding: 16px;
     }
     .marco {
+        background-color: var(--color-secondary);
         border: 2px solid var(--color-primary);
         border-radius: 15px;
         margin: 1%;
         padding: 1%;
+        h3 ,h4{
+            color: var(--color-text)
+        }
+    }
+    .block{
+        border: solid 2px var(--color-background);
+        border-radius: 20px;
+        padding: 20px;
+        margin: 10px
+    }
+    .hide{
+        display: none;
+    }
+    .show{
+        display:block;
     }
 }
+.table{
+    .green {
+        background-color: green;
+        color: white;
+    }
+
+    .yellow {
+        background-color: yellow;
+        color: black;
+    }
+
+    .red{
+        background-color: red;
+        color: white;
+    }
+}
+
 
 footer{
     background-color: var(--color-background);
@@ -73,6 +107,7 @@ footer{
 
 /*TABLET*/
 @media (min-width: 768px) and (max-width: 969px){
+
     footer{
         display: flex;
         justify-content: space-around;
@@ -104,8 +139,11 @@ footer{
         display: flex;
         justify-content: space-around;
     }
-    .bloque {
-        width: 50%;
+    .bLeft{
+        width: 30%;
+    }
+    .bRight{
+        width: 65%;
     }
     footer{
         display: flex;

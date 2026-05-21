@@ -1,45 +1,60 @@
 "use strict";
+
+import { funcionalidadBotones } from "./botones.js";
 /*Funcion de actualizacion de la tabla de viajes*/
-export function actualizaTabla(){
+export function cargaTabla(){
     const tabla = document.getElementById("tableBody");
+    tabla.innerHTML="";
     /** Voy a actualizar la tabla con la informacion del Localstorage **/
     const info = JSON.parse(localStorage.getItem("info"));
-    if(info.length !== 0){
-        let message = document.getElementById("empty");
-        if(message) {
-            message.remove();
-        }
-    }
     for(let i=0;i<info.length;i++){
         let bloque = document.createElement("tr"); /**NUEVA FILA */
         let ciudad = document.createElement("td");
         ciudad.textContent=info[i].to;
         let fecha = document.createElement("td");
+        let hoy = Date.now();
+        if(Date.parse(info[i].date)-hoy < (15*24*60*60*1000)){
+            fecha.classList.add("green");
+        }else if((Date.parse(info[i].date)-hoy < (30*24*60*60*1000))&&(Date.parse(info[i].date)-hoy>=(15*24*60*60*1000))){
+            fecha.classList.add("yellow");
+        }else{
+            fecha.classList.add("red");
+        }
         fecha.textContent=info[i].date;
         let duracion = document.createElement("td");
         duracion.textContent=info[i].duration;
         let precio = document.createElement("td");
-        precio.textContent="$ "+info[i].price;
+        precio.textContent="$ "+(info[i].price);
         let importe = document.createElement("td");
-        importe.textContent="$ "+parseFloat(info[i].duration)*parseFloat(info[i].price);
+        importe.textContent="$ "+(parseFloat(info[i].duration)*parseFloat(info[i].price)).toFixed(2);
         let nombre = document.createElement("td");
         nombre.textContent=info[i].name;
         let dni = document.createElement("td");
         dni.textContent=info[i].dni;
         let estado = document.createElement("td");
-        estado.textContent="A cobrar";
+        estado.textContent=info[i].estado;
+        estado.id = "estado"+i;
+        /**CREO LOS BOTONES CON ID ESPECIFICO A CADA UNO */
         let eliminar = document.createElement("button");
-        eliminar.textContent="Eliminar";
+        eliminar.textContent="X";
         eliminar.classList.add("btn","btn-danger","eliminar");
         eliminar.id="eliminar"+i;
         let pagar = document.createElement("button");
         pagar.classList.add("btn","btn-info","me-2","pagar");
         pagar.id="pagar"+i;
-        pagar.textContent="Pagar";
+        pagar.textContent="$";
+
+        let edit = document.createElement("button");
+        edit.classList.add("btn","btn-success","ms-2","edit");
+        edit.id="edit"+i;
+        edit.textContent="Edit";
+
         let botones = document.createElement("td");
         botones.classList.add("d-flex");
         botones.appendChild(pagar);
         botones.appendChild(eliminar);
+        botones.appendChild(edit);
+        botones.classList.add("botonera");
     
         bloque.appendChild(ciudad);
         bloque.appendChild(fecha);
@@ -51,8 +66,8 @@ export function actualizaTabla(){
         bloque.appendChild(estado);
         bloque.appendChild(botones);
         tabla.appendChild(bloque);
-    }
-   
+        funcionalidadBotones();
+    }   
 }
 
 export function actualizarEstadisticas(){
@@ -74,7 +89,6 @@ export function actualizarEstadisticas(){
                 resultado[index].total = (resultado[index].price*resultado[index].duration) + (element.price*element.duration); 
             }
         });
-        console.log(resultado);
         /**Creo una un-order list **/
         const lista = document.createElement("ul");
         resultado.forEach(el => {
@@ -108,7 +122,6 @@ export function actualizarPasajeros(){
                 resultado[index].pax = resultado[index].pax+1; 
             }
         });
-        console.log(resultado);
         /**Creo una un-order list **/
         const lista = document.createElement("ul");
         resultado.forEach(el => {
