@@ -30,5 +30,9 @@ Requerimientos adicionales:
 
 ## Features
 
-Para esta aplicación se utilizará JS con Bootstrap. La webapp esta pensada para ser mobile first.
+Para esta aplicación se utilizará JS con Bootstrap. La webapp esta pensada para ser mobile first y responsive.
+
+Se utilizó tanto la libreria Bootstrap como la libreria SweetAlert2 para manejar la estética y los alerts respectivamente.
+
+El filtrado es responsive tanto por destino como por nombre del pasajero.
  

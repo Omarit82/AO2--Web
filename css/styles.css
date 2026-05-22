@@ -30,11 +30,15 @@
 header{
     background-color: var(--color-background);
     color:var(--color-text);
-    height: 10vh;
+    height: 15vh;
     .title{
         font-style: italic;
         text-align: center;
-    }    
+    }
+    .subtitle {
+        display:none;
+    }
+    
 }
 
 main{
@@ -125,6 +129,9 @@ footer{
         display: flex;
         align-items: center;
         justify-content: center;
+        .subtitle{
+            display: block;
+        }
     }
     .navbar{
         display: none;
